@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
-const {invalidRouteHandler, serverErrorHandler} = require('./middlewares/handlers')
+const { invalidRouteHandler } = require('./middlewares')
 
 //
 dotenv.config();
@@ -34,7 +34,6 @@ app.use(cors())
 app.use('/posts', postsRouter);
 
 app.use(invalidRouteHandler);
-app.use(serverErrorHandler);
 
 //
 module.exports = app;

@@ -8,4 +8,12 @@ GET {{host}}/posts
 
 ###
 
+POST {{host}}/posts
+Content-Type: application/json
 
+{
+    "name": "Zoe",
+    "tags": ["測試", "程式"],
+    "type": "person",
+    "content": "  Test...   "
+}
