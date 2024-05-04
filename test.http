@@ -22,3 +22,11 @@ Content-Type: application/json
 
 DELETE {{host}}/posts/663462769630b810d32227ce
 
+###
+
+PATCH {{host}}/posts/66363c1e0ac79d4f35923ae4
+Content-Type: application/json
+
+{
+    "content": "updated content..."
+}

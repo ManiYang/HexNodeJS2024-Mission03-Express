@@ -52,4 +52,26 @@ router.delete('/:id', async (req, res, next) => {
     }
 });
 
+router.patch('/:id', handleRequestBodyForPost, async (req, res, next) => {
+    try {
+        const updatedPost = await Post.findByIdAndUpdate(
+            req.params.id, 
+            req.body, 
+            { new: true, runValidators: true }
+        );
+        if (updatedPost === null) {
+            throw new Error("找不到指定 ID 的貼文");
+        }
+        res.status(200).json({
+            status: 'success',
+            data: updatedPost
+        })
+    } catch (error) {
+        res.status(404).json({
+            status: 'failed',
+            message: error.message
+        });
+    } 
+});
+
 module.exports = router;
