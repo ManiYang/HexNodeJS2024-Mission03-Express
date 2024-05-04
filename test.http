@@ -17,3 +17,8 @@ Content-Type: application/json
     "type": "person",
     "content": "  Test...   "
 }
+
+###
+
+DELETE {{host}}/posts/663462769630b810d32227ce
+

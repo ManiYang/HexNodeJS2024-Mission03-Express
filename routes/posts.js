@@ -26,4 +26,30 @@ router.post('/', handleRequestBodyForPost, async (req, res, next) => {
     }
 });
 
+router.delete('/', async (req, res, next) => {
+    const result = await Post.deleteMany({});
+    res.status(200).json({
+        status: 'success',
+        data: result
+    })
+});
+
+router.delete('/:id', async (req, res, next) => {
+    try {
+        const result = await Post.findByIdAndDelete(req.params.id);
+        if (result === null) {
+            throw new Error('找不到指定 ID 的貼文');
+        }
+        res.status(200).json({
+            status: 'success',
+            data: result
+        })
+    } catch (error) {
+        res.status(404).json({
+            status: 'failed',
+            message: error.message
+        });
+    }
+});
+
 module.exports = router;
