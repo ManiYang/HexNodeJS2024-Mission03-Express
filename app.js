@@ -1,12 +1,14 @@
 var express = require('express');
+const cors = require('cors')
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const {invalidRouteHandler, serverErrorHandler} = require('./middlewares/handlers')
 
 //
-dotenv.config({ path: './.env'});
+dotenv.config();
 
 const connectionString = process.env.DATABASE.replace(
     "<password>",
@@ -27,7 +29,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors())
 
 app.use('/posts', postsRouter);
 
+app.use(invalidRouteHandler);
+app.use(serverErrorHandler);
+
+//
 module.exports = app;
