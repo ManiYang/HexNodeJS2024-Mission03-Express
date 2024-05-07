@@ -42,6 +42,7 @@ const postSchema = new mongoose.Schema(
     // schema options:
     {
         collection: "mission02_posts",
+        versionKey: false
     }
 );
 
