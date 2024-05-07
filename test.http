@@ -8,23 +8,27 @@ GET {{host}}/posts
 
 ###
 
-POST {{host}}/posts
+POST {{host}}/post
 Content-Type: application/json
 
 {
-    "name": "Zoe",
+    "name": "Albert",
     "tags": ["測試", "程式"],
     "type": "person",
-    "content": "  Test...   "
+    "content": "  Test..."
 }
 
 ###
 
-DELETE {{host}}/posts/663462769630b810d32227ce
+DELETE {{host}}/posts
 
 ###
 
-PATCH {{host}}/posts/66363c1e0ac79d4f35923ae4
+DELETE {{host}}/post/6639e3cdf7d5514d9fc2511b
+
+###
+
+PATCH {{host}}/post/6639e3c9f7d5514d9fc25119
 Content-Type: application/json
 
 {

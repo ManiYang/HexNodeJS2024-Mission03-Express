@@ -20,6 +20,7 @@ mongoose.connect(connectionString).then(() => {
 });
 
 //
+var postRouter = require('./routes/post');
 var postsRouter = require('./routes/posts');
 
 var app = express();
@@ -31,6 +32,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors())
 
+app.use('/post', postRouter);
 app.use('/posts', postsRouter);
 
 app.use(invalidRouteHandler);
