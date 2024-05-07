@@ -19,7 +19,7 @@ router.post('/', handleRequestBodyForPost, async (req, res, next) => {
             data: newPost
         });
     } catch (error) {
-        res.status(404).json({
+        res.status(400).json({
             status: 'failed',
             message: error.message
         });
@@ -45,7 +45,7 @@ router.delete('/:id', async (req, res, next) => {
             data: result
         })
     } catch (error) {
-        res.status(404).json({
+        res.status(400).json({
             status: 'failed',
             message: error.message
         });
@@ -67,7 +67,7 @@ router.patch('/:id', handleRequestBodyForPost, async (req, res, next) => {
             data: updatedPost
         })
     } catch (error) {
-        res.status(404).json({
+        res.status(400).json({
             status: 'failed',
             message: error.message
         });
