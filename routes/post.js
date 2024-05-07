@@ -38,6 +38,10 @@ router.delete('/:id', async (req, res, next) => {
 
 router.patch('/:id', handleRequestBodyForPost, async (req, res, next) => {
     try {
+        if (req.body.content === undefined) {
+            throw new Error("content 欄位未填寫");
+        }
+
         const updatedPost = await Post.findByIdAndUpdate(
             req.params.id, 
             req.body, 
